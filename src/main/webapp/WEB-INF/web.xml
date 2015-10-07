@@ -13,6 +13,10 @@
 	<servlet>
 		<servlet-name>ViewRendererServlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.ViewRendererServlet</servlet-class>
+		<init-param>
+			<param-name>sub-context</param-name>
+			<param-value>rest-services</param-value>
+		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>

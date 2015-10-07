@@ -24,11 +24,12 @@
 <vaadin-grid selection-mode="multi">
     <table>
         <!-- Define the columns -->
-        <col name="index" header-text="#" width="48">
-        <col name="user.picture.thumbnail" width="54">
-        <col name="user.name.first" header-text="First Name">
-        <col name="user.name.last" header-text="Last Name">
-        <col name="user.email" header-text="Email" flex>
+        <col name="firstName">
+        <col name="lastName">
+        <col name="company">
+        <col name="address">
+        <col name="city">
+        <col name="zip">
     </table>
 </vaadin-grid>
 
@@ -53,17 +54,7 @@
                 }
             }
         };
-        xhr.open("GET", "http://api.randomuser.me/?results=100", true);
+        xhr.open("GET", "/customers", true);
         xhr.send();
-
-        // Add a renderer for the index column
-        grid.columns[0].renderer = function(cell) {
-            cell.element.innerHTML = cell.row.index;
-        };
-
-        // Add a renderer for the picture column
-        grid.columns[1].renderer = function(cell) {
-            cell.element.innerHTML = '<img src="' + cell.data + '" style="width: 24px;">';
-        }
     });
 </script>
