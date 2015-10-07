@@ -178,5 +178,11 @@
 			<version>0.8</version>
 			<type>jar</type>
 		</dependency>
+
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.7.1</version>
+		</dependency>
 	</dependencies>
 </project>

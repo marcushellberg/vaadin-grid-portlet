@@ -4,10 +4,10 @@
 	<portlet>
 		<portlet-name>vaadin-grid-portlet</portlet-name>
 		<display-name>vaadin-grid-portlet</display-name>
-		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<portlet-class>com.liferay.util.bridges.mvc.MVCPortlet</portlet-class>
 		<init-param>
-			<name>contextConfigLocation</name>
-			<value>/WEB-INF/spring-context/portlet/vaadin-grid-portlet-portlet.xml</value>
+			<name>view-jsp</name>
+			<value>/view.jsp</value>
 		</init-param>
 		<expiration-cache>0</expiration-cache>
 		<supports>

@@ -16,7 +16,9 @@
 
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/portlet_2_0" prefix="portlet" %>
+
+<portlet:defineObjects />
 
 <script src="https://cdn.vaadin.com/vaadin-components/latest/webcomponentsjs/webcomponents-lite.min.js"></script>
 <link href="https://cdn.vaadin.com/vaadin-components/latest/vaadin-components/vaadin-components.html" rel="import">
@@ -24,21 +26,18 @@
 <vaadin-grid selection-mode="multi">
     <table>
         <!-- Define the columns -->
-        <col name="firstName">
-        <col name="lastName">
-        <col name="company">
-        <col name="address">
-        <col name="city">
-        <col name="zip">
+        <col name="firstName" header-text="First Name">
+        <col name="lastName" header-text="Last Name">
+        <col name="company" header-text="Company">
+        <col name="address" header-text="Address">
+        <col name="city" header-text="City">
+        <col name="zip" header-text="Zip">
     </table>
 </vaadin-grid>
 
 <script>
-    // The Web Components polyfill introduces a custom event we can
-    // use to determine when the custom elements are ready to be used
     document.addEventListener("WebComponentsReady", function () {
 
-        // Reference to the grid element
         var grid = document.querySelector("vaadin-grid");
 
         // Fetch some JSON data from a URL
@@ -47,14 +46,11 @@
             if (xhr.readyState == XMLHttpRequest.DONE) {
                 if (xhr.status == 200) {
                     var json = JSON.parse(xhr.responseText);
-
-                    // Use the returned data array directly as the data source
-                    // (keeping all the data source items in the browser's memory)
-                    grid.data.source = json.results;
+                    grid.data.source = json;
                 }
             }
         };
-        xhr.open("GET", "/customers", true);
+        xhr.open("GET", "/delegate/services/customers", true);
         xhr.send();
     });
 </script>
