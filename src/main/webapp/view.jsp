@@ -20,37 +20,17 @@
 
 <portlet:defineObjects />
 
-<script src="https://cdn.vaadin.com/vaadin-components/latest/webcomponentsjs/webcomponents-lite.min.js"></script>
-<link href="https://cdn.vaadin.com/vaadin-components/latest/vaadin-components/vaadin-components.html" rel="import">
+<script src="https://cdn.vaadin.com/vaadin-components/0.3.0-beta10/webcomponentsjs/webcomponents-lite.min.js"></script>
+<link href="https://cdn.vaadin.com/vaadin-components/0.3.0-beta10/vaadin-components/vaadin-components.html" rel="import">
 
 <vaadin-grid selection-mode="multi">
     <table>
         <!-- Define the columns -->
-        <col name="firstName" header-text="First Name">
-        <col name="lastName" header-text="Last Name">
-        <col name="company" header-text="Company">
-        <col name="address" header-text="Address">
-        <col name="city" header-text="City">
-        <col name="zip" header-text="Zip">
+        <col name="firstName" header-text="First Name" sortable>
+        <col name="lastName" header-text="Last Name" sortable>
+        <col name="company" header-text="Company" sortable>
+        <col name="address" header-text="Address" sortable>
+        <col name="city" header-text="City" sortable>
+        <col name="zip" header-text="Zip" sortable width="100">
     </table>
 </vaadin-grid>
-
-<script>
-    document.addEventListener("WebComponentsReady", function () {
-
-        var grid = document.querySelector("vaadin-grid");
-
-        // Fetch some JSON data from a URL
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == XMLHttpRequest.DONE) {
-                if (xhr.status == 200) {
-                    var json = JSON.parse(xhr.responseText);
-                    grid.data.source = json;
-                }
-            }
-        };
-        xhr.open("GET", "/delegate/services/customers", true);
-        xhr.send();
-    });
-</script>
