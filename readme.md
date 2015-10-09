@@ -1,4 +1,6 @@
-# Example Portlet with Spring MVC REST API, Spring Data and paging with Vaadin Grid
+# Portlet with Spring MVC REST API, Spring Data and paging with Vaadin Grid
+
+![Paging data table in Liferay](screenshot.png)
 
 ### How to deploy this portlet to Liferay:
 
