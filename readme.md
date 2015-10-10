@@ -2,6 +2,8 @@
 
 ![Paging data table in Liferay](screenshot.png)
 
+You can find a detailed step by step description of how this demo was built on [the Liferay Blog](https://www.liferay.com/web/mhellber/blog/-/blogs/powerful-grid-component-for-restful-data-sources).
+
 ### How to deploy this portlet to Liferay:
 
 1. Download and run Liferay.
