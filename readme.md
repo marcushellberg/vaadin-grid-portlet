@@ -30,3 +30,5 @@ Example for Liferay 6.2 GA4:
 ```
 mvn package liferay:deploy
 ```
+
+If you are interested in doing the same outside of a portlet environment, check out the [Vaadin Grid with paged REST data source](https://github.com/vaadin-marcus/vaadin-grid-rest) demo.
