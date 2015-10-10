@@ -25,9 +25,9 @@
 
 <vaadin-grid selection-mode="multi">
     <table>
-        <!-- Define the columns -->
         <col name="firstName" header-text="First Name" sortable>
         <col name="lastName" header-text="Last Name" sortable>
+        <col name="orderProgress" header-text="Order progress">
         <col name="company" header-text="Company" sortable>
         <col name="address" header-text="Address" sortable>
         <col name="city" header-text="City" sortable>

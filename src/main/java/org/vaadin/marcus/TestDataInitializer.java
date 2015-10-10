@@ -9,6 +9,7 @@ import org.vaadin.marcus.entity.Customer;
 import org.vaadin.marcus.repository.CustomerRepository;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 @Component
 public class TestDataInitializer implements ApplicationListener<ContextRefreshedEvent> {
@@ -23,7 +24,8 @@ public class TestDataInitializer implements ApplicationListener<ContextRefreshed
       int numCustomers = 10000;
 
       ArrayList<Customer> customers = new ArrayList<>(numCustomers);
-
+      Random random = new Random();
+        Customer.OrderProgress[] statuses = Customer.OrderProgress.values();
       for (int i = 0; i < numCustomers; i++) {
 
         Customer customer = new Customer();
@@ -33,6 +35,7 @@ public class TestDataInitializer implements ApplicationListener<ContextRefreshed
         customer.setCity(datafactory.getCity());
         customer.setZip(datafactory.getNumberText(5));
         customer.setCompany(datafactory.getBusinessName());
+        customer.setOrderProgress(statuses[random.nextInt(statuses.length)]);
 
         customers.add(customer);
       }

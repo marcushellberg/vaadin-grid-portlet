@@ -1,4 +1,5 @@
 document.addEventListener('WebComponentsReady', function () {
+  var statuses = ['RECEIVED', 'PROCESSING', 'PACKAGING', 'SHIPPED', 'DELIVERED'];
 
   function PagedDataSource(options) {
     var baseUrl = options.baseUrl;
@@ -161,14 +162,24 @@ document.addEventListener('WebComponentsReady', function () {
   }
 
   var grid = document.querySelector('vaadin-grid');
+  grid.frozenColumns = 2;
   grid.datasource = new PagedDataSource({
     baseUrl: '/delegate/services/customers',
     pageLength: 50
   });
-
   var sortChanged = false;
   grid.addEventListener('sort-order-changed', function () {
     sortChanged = true;
     grid.scrollToStart();
   });
+
+
+  grid.columns[2].renderer = function (cell) {
+    cell.element.innerHTML = '';
+    var progressBar = document.createElement('progress');
+    progressBar.setAttribute('value', ((statuses.indexOf(cell.data) + 1) / statuses.length).toString());
+    cell.element.appendChild(progressBar);
+  };
+
+
 });

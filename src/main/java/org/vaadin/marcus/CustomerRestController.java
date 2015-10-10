@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.vaadin.marcus.entity.Customer;
 import org.vaadin.marcus.repository.CustomerRepository;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,24 +29,14 @@ public class CustomerRestController {
             @RequestParam(value = "sort", required = false, defaultValue = "firstName") String sortProperty,
             @RequestParam(value = "order", required = false, defaultValue = "asc") String order) {
 
-        System.out.println(String.format("Finding customers [page: %d, size: %d, sort: %s, order: %s", page, size, sortProperty, order));
-
         Sort.Direction sortDirection = order.equals("asc") ? Sort.Direction.ASC : Sort.Direction.DESC;
 
-        // Our response will contain both a size and the result set.
+        PageRequest pageRequest = new PageRequest(page, size, sortDirection, sortProperty);
+        Page<Customer> customers = customerRepository.findAll(pageRequest);
+
         HashMap<String, Object> response = new HashMap<>();
-
-        // Grid makes a call for 0 size first, need to handle that separately
-        if (page == 0 && size == 0) {
-            response.put("total", customerRepository.count());
-            response.put("results", new ArrayList());
-        } else {
-            PageRequest pageRequest = new PageRequest(page, size, sortDirection, sortProperty);
-            Page<Customer> customers = customerRepository.findAll(pageRequest);
-            response.put("total", customers.getTotalElements());
-            response.put("results", customers.getContent());
-        }
-
+        response.put("total", customers.getTotalElements());
+        response.put("results", customers.getContent());
         return response;
     }
 }

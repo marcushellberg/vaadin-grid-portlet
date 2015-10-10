@@ -1,13 +1,14 @@
 package org.vaadin.marcus.entity;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Customer {
+
+    public enum OrderProgress {
+        RECEIVED, PROCESSING, PACKAGING, SHIPPED, DELIVERED
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,6 +19,9 @@ public class Customer {
     private String company;
     private String city;
     private String zip;
+    @Enumerated(EnumType.STRING)
+    private OrderProgress orderProgress;
+
 
     public Long getId() {
         return id;
@@ -73,5 +77,13 @@ public class Customer {
 
     public void setZip(String zip) {
         this.zip = zip;
+    }
+
+    public OrderProgress getOrderProgress() {
+        return orderProgress;
+    }
+
+    public void setOrderProgress(OrderProgress orderProgress) {
+        this.orderProgress = orderProgress;
     }
 }
