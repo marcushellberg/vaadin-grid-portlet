@@ -20,8 +20,8 @@
 
 <portlet:defineObjects />
 
-<script src="https://cdn.vaadin.com/vaadin-components/0.3.0-beta10/webcomponentsjs/webcomponents-lite.min.js"></script>
-<link href="https://cdn.vaadin.com/vaadin-components/0.3.0-beta10/vaadin-components/vaadin-components.html" rel="import">
+<script src="https://cdn.vaadin.com/vaadin-elements/0.3.0-beta12/webcomponentsjs/webcomponents-lite.min.js"></script>
+<link href="https://cdn.vaadin.com/vaadin-elements/0.3.0-beta12/vaadin-elements/vaadin-elements.html" rel="import">
 
 <vaadin-grid selection-mode="multi">
     <table>
